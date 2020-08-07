@@ -114,3 +114,64 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+//.createElement
+//.classList .add
+//appendChild
+//textContent.
+const articles = document.querySelector('.articles');
+
+function articleCreate(data1){
+
+  //article
+  let article = document.createElement('div')
+  article.classList.add('article');
+    articles.appendChild(article)
+
+  //article title
+  let articleTitle = document.createElement('h2')
+  articleTitle.textContent = data1.title;
+  article.appendChild(articleTitle);
+  //date
+  let date1 = document.createElement('p')
+  date1.classList.add('date');
+  date1.textContent = data1.date;
+  article.appendChild(date1)
+  // paragraph 1
+  let para1 = document.createElement('p')
+  para1.textContent = data1.firstParagraph
+  article.appendChild(para1)
+  // paragraph 2
+  let para2 = document.createElement('p')
+  para2.textContent = data1.secondParagraph
+  article.appendChild(para2)
+  // paragraph 3
+  let para3 = document.createElement('p')
+  para3.textContent = data1.thirdParagraph
+  article.appendChild(para3)
+  //expandbutton
+  // EXPAND BUTTON
+  let span = document.createElement('span');
+      span.classList.add('expandButton');
+      span.textContent = 'Read Article ';
+      span.addEventListener('click', () => {
+        article.classList.toggle('article-open');
+          span.classList.toggle('hide');
+          span2.classList.toggle('hide');
+      });
+
+  let span2 = document.createElement('span');
+      span2.classList.add('expandButton', 'hide');
+      span2.textContent = 'Close Article';
+      article.append(span);
+      article.append(span2);
+      span2.addEventListener('click', () => {
+        article.classList.toggle('article-open');
+          span.classList.toggle('hide');
+          span2.classList.toggle('hide');
+      });
+
+
+  return article
+}
+
+data.map(arr => articleCreate(arr));
